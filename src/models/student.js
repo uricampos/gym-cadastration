@@ -6,7 +6,7 @@ const studentSchema = mongoose.Schema({
     phone: { type: String, required: true },
     adress: { type: String },
     goal: { type: String },
-    Workout: [
+    workout: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Workout',
