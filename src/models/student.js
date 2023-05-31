@@ -10,6 +10,7 @@ const studentSchema = mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Workout',
+            required: true,
         },
     ],
 });
