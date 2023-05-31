@@ -2,14 +2,14 @@
 const express = require('express');
 const router = express.Router();
 
-// importing Workouts models to use its Schema and methods
-const Workouts = require('../models/workout');
+// importing Exercises model to use its Schema and methods
+const Exercises = require('../models/exercise');
 
 // creating routes - get/get:id/post/put:id/delete:id
 router.get('/', async (req, res) => {
     try {
-        let workouts = await Workouts.find({});
-        res.status(200).json(workouts);
+        let exercises = await Exercises.find({});
+        res.status(200).json(exercises);
     } catch (error) {
         res.status(500).json(error);
     }
@@ -17,38 +17,37 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        let workout = await Workouts.findById(req.params.id);
-        res.status(200).json(workout);
+        let exercise = await Exercises.findById(req.params.id);
+        res.status(200).json(exercise);
     } catch (error) {
         res.status(422).json(error);
     }
 });
 
 router.post('/', async (req, res) => {
-    let { name, exercises, students } = req.body;
+    let { name, muscle, description } = req.body;
 
     try {
-        let workout = await Workouts.create({
+        let exercise = await Exercises.create({
             name,
-            exercises,
-            students,
+            muscle,
+            description,
         });
-        res.status(200).json(workout);
+        res.status(200).json(exercise);
     } catch (error) {
         res.status(422).json(error);
     }
 });
 
 router.put('/:id', async (req, res) => {
-    let { name, exercises, students } = req.body;
-
+    let { name, muscle, description } = req.body;
     try {
-        let workout = await Workouts.findByIdAndUpdate(
-            req.params.id,
-            { name, exercises, students },
+        let exercise = await Exercises.findByIdAndUpdate(
+            req.param.id,
+            { name, muscle, description },
             { new: true }
         );
-        res.status(200).json(workout);
+        res.status(200).json(exercise);
     } catch (error) {
         res.status(422).json(error);
     }
@@ -56,11 +55,11 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        let workout = await Workouts.findByIdAndDelete(req.params.id)
-        res.status(200).json(workout);
+        let exercise = await Exercises.findByIdAndDelete(req.params.id);
+        res.status(200).json(exercise);
     } catch (error) {
         res.status(422).json(error);
     }
-})
+});
 
 module.exports = router;

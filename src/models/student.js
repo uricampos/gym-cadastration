@@ -1,5 +1,7 @@
+// importing mongoose
 const mongoose = require('mongoose');
 
+// creating student Schema
 const studentSchema = mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
