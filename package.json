@@ -1,0 +1,25 @@
+{
+  "name": "gym-cadastration",
+  "version": "1.0.0",
+  "description": "Software developed for registering people at the gym",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uricampos/gym-cadastration.git"
+  },
+  "author": "Uriel Campos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uricampos/gym-cadastration/issues"
+  },
+  "homepage": "https://github.com/uricampos/gym-cadastration#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2",
+    "nodemon": "^2.0.22"
+  }
+}
