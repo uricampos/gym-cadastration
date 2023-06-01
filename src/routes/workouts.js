@@ -2,65 +2,18 @@
 const express = require('express');
 const router = express.Router();
 
-// importing Workouts models to use its Schema and methods
-const Workouts = require('../models/workout');
+// importing workouts controller
+const workoutsController = require('../controllers/workoutsController');
 
-// creating routes - get/get:id/post/put:id/delete:id
-router.get('/', async (req, res) => {
-    try {
-        let workouts = await Workouts.find({});
-        res.status(200).json(workouts);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+// creating routes - get/get:id/post/put:id/delete:id - and using controller to manipulate data
+router.get('/', workoutsController.get);
 
-router.get('/:id', async (req, res) => {
-    try {
-        let workout = await Workouts.findById(req.params.id);
-        res.status(200).json(workout);
-    } catch (error) {
-        res.status(422).json(error);
-    }
-});
+router.get('/:id', workoutsController.getId);
 
-router.post('/', async (req, res) => {
-    let { name, exercises, students } = req.body;
+router.post('/', workoutsController.post);
 
-    try {
-        let workout = await Workouts.create({
-            name,
-            exercises,
-            students,
-        });
-        res.status(200).json(workout);
-    } catch (error) {
-        res.status(422).json(error);
-    }
-});
+router.put('/:id', workoutsController.put);
 
-router.put('/:id', async (req, res) => {
-    let { name, exercises, students } = req.body;
-
-    try {
-        let workout = await Workouts.findByIdAndUpdate(
-            req.params.id,
-            { name, exercises, students },
-            { new: true }
-        );
-        res.status(200).json(workout);
-    } catch (error) {
-        res.status(422).json(error);
-    }
-});
-
-router.delete('/:id', async (req, res) => {
-    try {
-        let workout = await Workouts.findByIdAndDelete(req.params.id)
-        res.status(200).json(workout);
-    } catch (error) {
-        res.status(422).json(error);
-    }
-})
+router.delete('/:id', workoutsController.delete)
 
 module.exports = router;

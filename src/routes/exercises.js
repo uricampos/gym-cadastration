@@ -5,7 +5,7 @@ const router = express.Router();
 // importing Exercises model to use its Schema and methods
 const Exercises = require('../models/exercise');
 
-// creating routes - get/get:id/post/put:id/delete:id
+// creating routes - get/get:id/post/put:id/delete:id - and using controller to manipulate data
 router.get('/', async (req, res) => {
     try {
         let exercises = await Exercises.find({});

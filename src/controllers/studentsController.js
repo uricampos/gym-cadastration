@@ -1,3 +1,4 @@
+// importing Workouts models to use its Schema and methods
 const Students = require('../models/student');
 
 module.exports = {
