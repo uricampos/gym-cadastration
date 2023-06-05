@@ -1,4 +1,4 @@
-# Gym Cadastration API
+# Gym Registering API
 ### Software developed for registering people at the gym - also use API and database concepts
 
 ## Technologies used: 
